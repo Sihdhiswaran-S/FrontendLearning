@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Animation</title>
+    <style>
+        .heading{
+            color: blue;
+        }
+        #hello{
+            color: green;
+        }
+        h1{
+            color: yellow;
+        }
+        .box{ 
+            height: 400px;
+            width: 400px;
+            background-color: rgb(236, 81, 81);
+            text-align: center;
+            font-size: 200px;
+            animation-name: hello;
+            animation-duration: 5s;
+            position: sticky;
+            animation-iteration-count: 10;
+        }
+        /* @keyframes hello{
+            from{
+                background-color: blue;
+            }
+            to{
+                background-color: red;
+            }
+        } */
+        @keyframes hello{
+            0%{
+                background-color: blue;
+                top: 0px;
+                left: 0px;
+            }
+            25%{
+                background-color: green;
+                top: 0px;
+                left: 200px;
+            }
+            50%{
+                background-color: red;
+                top: 200px;
+                left: 200px;
+            }
+            75%{
+                background-color: yellow;
+                top: 200px;
+                left: 0px;
+            }
+            100%{
+                background-color: blue;
+                top: 0px;
+                left: 0px;  
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading" id="hello" ">
+        Learning Animation
+    </h1>
+    <div class="box">
+       box
+    </div>
+    <br>
+    <div class="box" style="position:relative;">
+        left
+    </div>
+</body>
+</html>

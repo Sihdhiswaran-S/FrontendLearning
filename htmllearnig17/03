@@ -1,0 +1,13 @@
+css hover {
+    <style>
+        .btn:hover {
+            background-color: blue;
+
+        }
+    </style>
+</head>
+<body>
+    <button class="btn">
+        Button
+    </button>
+}

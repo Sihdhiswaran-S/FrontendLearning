@@ -1,0 +1,37 @@
+css hover {
+    <style>
+        .btn:hover {
+            background-color: blue;
+        }
+        li:nth-child(2n) {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn">
+        Button
+    </button>
+    <h1 class="heading">Hello text</h1>
+    <ul>
+        <li>heading 1</li>
+        <li>heading 2</li>
+        <li>heading 3</li>
+        <li>heading 4</li>
+        <li>heading 5</li>
+        <li>heading 6</li>
+        <li>heading 7</li>
+        <li>heading 8</li>
+        <li>heading 9</li>
+    </ul>
+}
+:hover "is a pseudo-class in CSS that applies styles to an element when the user hovers over it with a pointing device, such as a mouse. In the provided code snippet, the .btn:hover selector changes the background color of the button to blue when it is hovered over."
+:nth-child ""
+::first-letter
+::first-line
+::selection
+css property float {
+        .img {
+            float: right;
+        }
+}

@@ -1,0 +1,53 @@
+DAY 3
+    how to optmization in search engine in html file using meta tag
+    go to the head tag and 
+    do this "<meta name="description" content="A table showing sports players and their details">"
+    and a title for our website 
+    made a search engine optmization using meta tag 
+    DIV TAG 
+        div tag is act as a container and its helpful for store the multiple html element
+    
+DAY 4{
+
+
+    class {
+    the class contains the properties and methods of the object
+    it is a blueprint of the object
+    it is a template for creating objects
+    it is a useful design pattern for code reuse and organization
+    it can be applied to many elements in the html document
+}
+id{
+    the id is a unique identifier for an element in the html document
+    it is used to target specific elements with css and javascript
+    it should be unique within the document, meaning that no two elements should have the same id
+}
+link icon{
+    the link icon is used to specify the icon for a webpage
+    it is typically displayed in the browser tab or bookmark list
+    it can be specified using the <link> element in the head of the html document
+    it can be in various formats such as .ico, .png, .svg, etc.
+}
+svg{
+    svg stands for Scalable Vector Graphics
+    it is a vector image format that can be scaled to any size without losing quality
+    it is commonly used for icons, logos, and illustrations on the web
+    it can be created and edited using various software such as Adobe Illustrator, Inkscape, etc.
+    it can be embedded directly in the html document using the <svg> element or linked as an external file
+    it can be styled and animated using css and javascript
+}
+p{
+    the <p> element is used to define a paragraph in the html document
+    it is a block-level element that creates a new line before and after it
+    it can contain text, images, and other inline elements
+    it can be styled using css to change its appearance, such as font size, color, background, etc.
+    it is a default state is diplayed as a block element, meaning it takes up the full width of its container and starts on a new line
+}
+a{
+    the <a> element is used to create a hyperlink in the html document
+    it can link to another webpage, a specific section of the same page, an email address, or a file
+    it is typically displayed as underlined text, but can be styled using css to change its appearance
+    it can have various attributes such as href (the destination of the link), target (where to open the link), title (additional information about the link), etc.
+    it is a default state is displayed as an inline element, meaning it does not start on a new line and only takes up as much width as necessaryase
+}
+}

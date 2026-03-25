@@ -1,0 +1,8 @@
+how to optmization in search engine in html file using meta tag
+go to the head tag and 
+do this "<meta name="description" content="A table showing sports players and their details">"
+and a title for our website 
+made a search engine optmization using meta tag 
+DIV TAG 
+    div tag is act as a container and its helpful for store the multiple html element
+    

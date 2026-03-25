@@ -1,0 +1,16 @@
+dom tree{
+    dom tree "document object Model"
+   dom tree diagram structure {
+
+                document
+                   ||
+                   html
+                   ||
+             ===    ==      ====
+                ||           ||
+                head         body
+        ============       =============
+        |   |       |       |   |   |   |
+    title   meta    link    h1  div img table
+    }    
+}
