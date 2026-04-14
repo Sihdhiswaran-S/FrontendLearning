@@ -1,0 +1,316 @@
+import React, { useState } from "react";
+import "../styles/Contact.css";
+
+const contactInfo = [
+  {
+    icon: "📍",
+    title: "Farm Address",
+    lines: [
+      "No. 12, Mushroom Valley Road,",
+      "Bengalore – 641001,",
+      "Karnataka, India",
+    ],
+  },
+  {
+    icon: "📞",
+    title: "Phone",
+    lines: ["+91 8496801546", ],
+  },
+  {
+    icon: "✉️",
+    title: "Email",
+    lines: ["jasfreshmushroom@gmail.com",],
+  },
+  {
+    icon: "🕗",
+    title: "Working Hours",
+    lines: ["Mon – Sat: 8:00 AM – 6:00 PM", "Sunday: 9:00 AM – 1:00 PM"],
+  },
+];
+
+const subjects = [
+  "General Inquiry",
+  "Product Order",
+  "Bulk / Wholesale",
+  "Farm Visit",
+  "Careers",
+  "Other",
+];
+
+function Contact() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const e = {};
+    if (!form.name.trim()) e.name = "Name is required";
+    if (!form.email.trim()) e.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(form.email)) e.email = "Enter a valid email";
+    if (!form.phone.trim()) e.phone = "Phone is required";
+    if (!form.subject) e.subject = "Please select a subject";
+    if (!form.message.trim()) e.message = "Message is required";
+    return e;
+  };
+
+  const handleChange = (e) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs);
+      return;
+    }
+    setSubmitted(true);
+  };
+
+  const handleReset = () => {
+    setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+    setErrors({});
+    setSubmitted(false);
+  };
+
+  return (
+    <div className="contact-page">
+      {/* ── HERO ── */}
+      <section className="ct-hero">
+        <div className="ct-hero__overlay" />
+        <div className="ct-hero__content">
+          <span className="ct-tag">Get In Touch</span>
+          <h1 className="ct-hero__title">
+            We'd Love to <span>Hear From You</span>
+          </h1>
+          <p className="ct-hero__sub">
+            Have a question about our mushrooms, want to place a bulk order, or
+            just want to say hello? Reach out — we're always happy to connect.
+          </p>
+        </div>
+        <div className="ct-hero__scroll">↓ Scroll down</div>
+      </section>
+
+      {/* ── MAIN CONTENT ── */}
+      <section className="ct-main">
+        {/* ── LEFT: Contact Info Cards ── */}
+        <div className="ct-info">
+          <span className="ct-tag">Contact Details</span>
+          <h2 className="ct-section-title">
+            Find Us <span>Here</span>
+          </h2>
+          <p className="ct-info__desc">
+            Visit our farm, call us, or drop an email — we're available across
+            multiple channels to serve you better.
+          </p>
+
+          <div className="ct-cards">
+            {contactInfo.map((item, i) => (
+              <div
+                className="ct-card"
+                key={i}
+                style={{ animationDelay: `${i * 0.1}s` }}>
+                <span className="ct-card__icon">{item.icon}</span>
+                <div className="ct-card__body">
+                  <h4>{item.title}</h4>
+                  {item.lines.map((line, j) => (
+                    <p key={j}>{line}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Social links */}
+          <div className="ct-socials">
+            <span className="ct-socials__label">Follow Us</span>
+            <div className="ct-socials__row">
+              {["Instagram", "Facebook", "WhatsApp", "YouTube"].map((s) => (
+                <a key={s} href="#" className="ct-social-btn" aria-label={s}>
+                  {s[0]}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ── RIGHT: Form ── */}
+        <div className="ct-form-wrap">
+          {submitted ? (
+            <div className="ct-success">
+              <span className="ct-success__icon">✅</span>
+              <h3>Message Sent!</h3>
+              <p>
+                Thank you, <strong>{form.name}</strong>! We've received your
+                message and will get back to you within 24 hours.
+              </p>
+              <button className="ct-btn" onClick={handleReset}>
+                Send Another Message
+              </button>
+            </div>
+          ) : (
+            <>
+              <span className="ct-tag">Send a Message</span>
+              <h2 className="ct-section-title">
+                Write to <span>Us</span>
+              </h2>
+
+              <form className="ct-form" onSubmit={handleSubmit} noValidate>
+                {/* Row 1 — Name & Email */}
+                <div className="ct-form__row">
+                  <div className="ct-field">
+                    <label htmlFor="name">
+                      Full Name <span>*</span>
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="e.g. Arjun Selvam"
+                      value={form.name}
+                      onChange={handleChange}
+                      className={errors.name ? "ct-input--error" : ""}
+                    />
+                    {errors.name && (
+                      <span className="ct-error">{errors.name}</span>
+                    )}
+                  </div>
+                  <div className="ct-field">
+                    <label htmlFor="email">
+                      Email Address <span>*</span>
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="you@example.com"
+                      value={form.email}
+                      onChange={handleChange}
+                      className={errors.email ? "ct-input--error" : ""}
+                    />
+                    {errors.email && (
+                      <span className="ct-error">{errors.email}</span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Row 2 — Phone & Subject */}
+                <div className="ct-form__row">
+                  <div className="ct-field">
+                    <label htmlFor="phone">
+                      Phone Number <span>*</span>
+                    </label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="+91 98765 43210"
+                      value={form.phone}
+                      onChange={handleChange}
+                      className={errors.phone ? "ct-input--error" : ""}
+                    />
+                    {errors.phone && (
+                      <span className="ct-error">{errors.phone}</span>
+                    )}
+                  </div>
+                  <div className="ct-field">
+                    <label htmlFor="subject">
+                      Subject <span>*</span>
+                    </label>
+                    <select
+                      id="subject"
+                      name="subject"
+                      value={form.subject}
+                      onChange={handleChange}
+                      className={errors.subject ? "ct-input--error" : ""}>
+                      <option value="">Select a subject</option>
+                      {subjects.map((s) => (
+                        <option key={s} value={s}>
+                          {s}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.subject && (
+                      <span className="ct-error">{errors.subject}</span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Message */}
+                <div className="ct-field ct-field--full">
+                  <label htmlFor="message">
+                    Your Message <span>*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    placeholder="Tell us how we can help you..."
+                    value={form.message}
+                    onChange={handleChange}
+                    className={errors.message ? "ct-input--error" : ""}
+                  />
+                  {errors.message && (
+                    <span className="ct-error">{errors.message}</span>
+                  )}
+                </div>
+
+                <button type="submit" className="ct-btn ct-btn--full">
+                  Send Message <span className="ct-btn__arrow">→</span>
+                </button>
+              </form>
+            </>
+          )}
+        </div>
+      </section>
+
+      {/* ── MAP SECTION ── */}
+      <section className="ct-map">
+        <div className="ct-map__header">
+          <span className="ct-tag">Our Location</span>
+          <h2 className="ct-section-title">
+            Visit Our <span>Farm</span>
+          </h2>
+        </div>
+        <div className="ct-map__frame">
+          <iframe
+            title="JAS Fresh Mushroom Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.274811783277!2d77.4647857!3d13.018163800000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3b4978708727%3A0x85ccc0c7deb3592f!2sJAS%20fresh%20mushrooms!5e0!3m2!1sen!2sin!4v1773722308411!5m2!1sen!2sin"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+          {/* <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.274811783277!2d77.4647857!3d13.018163800000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3b4978708727%3A0x85ccc0c7deb3592f!2sJAS%20fresh%20mushrooms!5e0!3m2!1sen!2sin!4v1773722308411!5m2!1sen!2sin"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe> */}
+        </div>
+      </section>
+
+      {/* ── CTA STRIP ── */}
+      <section className="ct-cta">
+        <h2>Prefer to call us directly?</h2>
+        <p>Our team is available Mon–Sat, 8 AM to 6 PM</p>
+        <a href="tel:+918496801546" className="ct-cta__btn">
+          📞 +91 8496801546
+        </a>
+      </section>
+    </div>
+  );
+}
+
+export default Contact;

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Section</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        .main{
+            display: flex;
+            flex-direction: column  ;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        .navbarComponent{
+            margin-left: 200px;
+        }
+        .imgclassnav{
+            height:80px ;
+            width: 80px;
+            margin-left: 20px;
+            margin-right: 50px;
+        }
+         .searchbar{
+            width: 500px;
+            margin-left: 50px;
+            
+        }
+        .srcbtn{
+            margin-left: 10px;
+            background-color: antiquewhite;
+        }
+        .navbar{
+            background-color: #a0a0ad;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+        .card-scrollor{
+            display: flex;
+            /* flex-wrap: wrap; */
+            flex-direction: row;
+            display: grid;
+            grid-template-columns:  20% 20% 20% 20%;
+            gap: 50px;
+            justify-content: center;
+            margin-top: 50px;
+            overflow-x: scroll;
+            overflow-y: auto
+        }
+        .card{
+            height: 100%;
+            min-width: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+     <!-- navbar -->
+    <nav class="navbar navbar-expand-lg   navbg">
+    <div class="container-fluid">
+        <img src="data:image/png;base64,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" class="d-block  imgclassnav" alt="...">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2 searchbar" type="search" placeholder="Search" aria-label="Search"/>
+              <button class="btn btn-outline-success srcbtn" type="submit">Search</button>
+             </form>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbarComponent">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#offcanvasExample" data-bs-toggle="offcanvas">MEN</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link"  data-bs-toggle="modal" data-bs-target="#exampleModal">WOMEN</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true"></a>
+                </li>
+            </ul>
+        
+        </div>
+    </div>
+    </nav>
+    <!-- OFFCANVAS -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div>
+        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+        </div>
+        <div class="dropdown mt-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            Dropdown button
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+        </div>
+    </div>
+    </div>
+    <div class="main">
+        <div class="card-scrollor">
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/4/w/x/-original-imagg5qz5pqmzfxs.jpeg?q=70" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> blue shoe</h5>
+                <p class="card-text">Free Kicks FK- MXO Premium Slip On Sneakers For Men (Blue , 9)</p>
+                <a href="https://www.flipkart.com/free-kicks-fk-mxo-premium-slip-sneakers-men/p/itme8319593f9574?pid=SHOGPR5XDEHWUYQA&lid=LSTSHOGPR5XDEHWUYQAB8SYZC&marketplace=FLIPKART&store=osp%2Fcil%2Fe1f&srno=b_1_2&otracker=browse&fm=organic&iid=en_4c_oBPms_LvfAn1bM6vYUJQOkXwLpclPeR17mRXda08S-cccrg7zjnrizSjiptUQmHmLcrK-bnBfnValSarR9g%3D%3D&ppt=browse&ppn=browse&ssid=ff59qzqxc00000001774587055975&ov_redirect=true" class="btn btn-primary">Go somewhere</a>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+     <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+    </button> -->
+
+<!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            ...
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+        </div>
+    </div>
+    </div>
+    <!-- script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

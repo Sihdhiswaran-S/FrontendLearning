@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script>
+        document.getElementById('heading').innerHTML="hello";
+    </script>  this script tag is in head tag so it will not work because the body is not loaded yet
+    after the body loaded then only it can be executed the script tag should be in body tag-->
+    
+</head>
+<body>
+    <h1 id="heading"></h1>
+    <h1 id="blur"></h1>
+    <label for="username">username</label>
+    <input type="text" id="username" name="username" onblur="handleblur()"> 
+    <!-- onblur is an event that is triggered when the user clicks outside the input field -->
+    <button onclick="handleclick() " onmouseover="handleMouseOver()" onmouseout="handleMouseOut()">submit</button>
+
+    <script>
+        function handleclick(){
+            document.getElementById('heading').innerHTML="hello";
+        }
+        function handleblur(){
+            //document.getElementById('blur').innerHTML="handleblur function called";
+            document.getElementById('blur').innerHTML=document.getElementById('username').value;
+        }
+        function handleMouseOver(){
+            document.getElementById('heading').innerHTML="handleMouseOver function called";
+        }
+        function handleMouseOut(){
+            document.getElementById('heading').innerHTML="handleMouseOut function called";
+        }
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@ this file name should be keep start with the small letter
 save file with .html
 
 TAGS
-text Size for  h1,p
-2.Image for img tag its two type absolute path , relative path .
+text Size for  <h1/>,<p/>.
+2.Image for <img/> tag its two type absolute path , relative path .
 
 	
