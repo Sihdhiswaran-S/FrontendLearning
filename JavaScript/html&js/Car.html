@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Speedometer</title>
+</head>
+<body>
+    <h1> 🚗Car Speedometer</h1>
+    <h2>Current Speed: <span id="speedDisplay">0</span> km/h</h2>
+    <button onclick="car.accelerate(10)">Accelerate +10</button>
+    <button onclick="car.brake(10)">Brake -10</button>
+
+    <script>
+        function carSpeedometer() {
+            let speed = 0; // Private variable to hold the current speed
+
+            function updateSpeedDisplay() {
+                document.getElementById('speedDisplay').innerText = speed;
+            }
+            // return {
+            //     accelerate: function (amount) {
+            //         speed += amount;
+            //         updateSpeedDisplay();
+            //     },
+            //     brake: function (amount) {
+            //         speed = Math.max(0, speed - amount); // Ensure speed doesn't go below 0
+            //         updateSpeedDisplay();
+            //     }
+            // };
+
+            function accelerate(amount) {
+                speed += amount;
+                console.log(`Accelerated by ${amount} km/h. Current speed: ${speed} km/h`);
+                updateSpeedDisplay();
+            }
+            function brake(amount) {
+                speed-=amount;
+                if (speed < 0) {
+                    speed=0;
+                }
+                console.log(`Accelerated by ${amount} km/h. Current speed: ${speed} km/h`);
+                updateSpeedDisplay();
+            }
+            return {
+                accelerate,
+                brake
+            }; 
+        }
+        const car = carSpeedometer();
+        console.log(car);
+    </script>
+</body>
+</html>

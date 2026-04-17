@@ -1,0 +1,25 @@
+class College{
+    constructor(name){
+        this.name = name;
+    }
+    famousFor(){
+        console.log(`${this.name} is famous for placement`);
+    }
+}
+class KIT extends College{
+    famousFor(){
+        console.log(`${this.name} is famous for fraud `);
+
+    }
+}
+class ATI extends College{
+    famousFor(){
+        console.log(`${this.name} is famous for Sanskriti `);
+    }
+}
+const kit = (a, b) => {
+    console.log("A+B", a + b);
+}
+kit(5,10); // A+B 15
+    
+
