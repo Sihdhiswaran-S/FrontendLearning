@@ -1,0 +1,70 @@
+/* login.css */
+
+/* Center the entire form on the page */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Style the form container */
+form {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label styling */
+.input-label {
+  margin-bottom: 8px;
+  color: #333;
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Common input styling */
+.input-text {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+/* Change border color on focus */
+.input-text:focus {
+  border-color: #007bff;
+}
+
+/* Submit button styling */
+.login-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+.login-btn:active {
+  transform: scale(0.98);
+}

@@ -12,6 +12,7 @@ import MobileView from "./compontents/may-1/MoblieView";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { mobile } from "./compontents/may-6/mobile";
 import Product from "./compontents/may-6/Product";
+import Login from "./compontents/may_8/Login";
 
 function App() {
   // const movies = [
@@ -41,7 +42,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<MobileView mobiles={mobile} />} />
+          <Route path="/" element={<Login></Login>}/>
+          <Route path="/mobiles" element={<MobileView mobiles={mobile} />} />
           <Route path="/mobileview/:prodID" element={<Product />} />
         </Routes>
       </BrowserRouter>
