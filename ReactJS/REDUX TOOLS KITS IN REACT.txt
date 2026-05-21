@@ -1,0 +1,21 @@
+REDUX TOOLS KITS IN REACT
+	
+	core principle of redux
+		1. store 
+		2. reducer
+		3.action
+	Store 
+		is used for store the data
+	reducer 
+		is used for add the logic about the application
+	ACTION
+		it is a step from the ui for preform the action
+
+				
+		--------------dispatch (action)------------
+		|					||
+		|					||		
+		UI application				reducer (store)
+		|					||
+		|					||
+		-----------------------------------------s
